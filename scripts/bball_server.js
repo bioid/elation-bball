@@ -23,25 +23,9 @@ elation.require(_reqs, function() {
   }, elation.engine.server);
 
   elation.component.add('engine.things.bball_server', function() {
-    this.create_lights = function() {
-      var lights = [];
-      lights.push(this.spawn('light', 'sun', {
-        "position":[50,30,30],
-        "persist":false,
-        "type":"directional",
-        "intensity":0.6,
-      }));
-      
-      lights.push(this.spawn('light', 'ambient', {
-        "position":[0,0,0],
-        "persist":false,
-        "type":"ambient",
-        "color":0xcccccc,
-      }));
-
-      return lights;
+    this.initNetwork = function() {
+      this.server.start({ port: 9001 });
     };
-    
     this.loadWorld = function() {
       this.neighborhood = this.spawn('testplane', 'neighborhood', {position: [0, -2, 0]});
     };
