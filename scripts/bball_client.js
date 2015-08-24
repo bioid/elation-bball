@@ -7,7 +7,7 @@ elation.require(_reqs, function() {
   elation.component.add('bball_client', function() {
     this.init = function() {
       this.name = this.args.name || 'default';
-      this.engine = elation.engine.create(this.name, ["physics", "sound", "ai", "world", "render", "controls", "client"], elation.bind(this, this.startEngine));
+      this.engine = elation.engine.create(this.name, ["physics", "ai", "world", "render", "controls", "client"], elation.bind(this, this.startEngine));
     };
     
     this.initWorld = function() {

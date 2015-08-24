@@ -6,12 +6,15 @@ var _reqs = [
     'engine.things.light',
     'engine.things.generic',
     'vrcade.vrcadeplayer',
+    'bball.janusobject',
+    'janus.bridge',
     'bball.testplane'
   ];
 elation.require(_reqs, function() {
 
   elation.component.add('bball_server', function() {
-
+    
+        
     this.initWorld = function() {
       this.world.load({
         type: 'bball_server',
@@ -23,9 +26,12 @@ elation.require(_reqs, function() {
   }, elation.engine.server);
 
   elation.component.add('engine.things.bball_server', function() {
+    
     this.initNetwork = function() {
       this.server.start({ port: 9001 });
+      this.janusBridge = new elation.engine.systems.janus(this.server, this, "http://dev.brandonhinshaw.us/media/vrcade/test.snip"); 
     };
+    
     this.loadWorld = function() {
       this.neighborhood = this.spawn('testplane', 'neighborhood', {position: [0, -2, 0]});
     };
